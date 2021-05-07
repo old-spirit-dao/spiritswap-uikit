@@ -18,3 +18,5 @@ export { default as TradeIcon } from "./Trade";
 export { default as TwitterIcon } from "./Twitter";
 export { default as ShieldIcon } from "./Shield";
 export { default as BushIcon } from "./Bush";
+export { default as BridgeIcon } from "./Bridge";
+export { default as VaultIcon } from "./Vault";
