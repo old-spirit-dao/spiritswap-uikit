@@ -25,6 +25,7 @@ export { default as HelpIcon } from "./Icons/Help";
 export { default as InfoIcon } from "./Icons/Info";
 export { default as ListViewIcon } from "./Icons/ListView";
 export { default as LogoIcon } from "./Icons/Logo";
+export { default as LotteryIcon } from "./Icons/Lottery";
 export { default as LogoRoundIcon } from "./Icons/LogoRound";
 export { default as MetamaskIcon } from "./Icons/Metamask";
 export { default as MinusIcon } from "./Icons/Minus";
