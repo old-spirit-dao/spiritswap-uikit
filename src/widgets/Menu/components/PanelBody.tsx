@@ -27,7 +27,7 @@ const Price = styled.div`
   //padding: 0 8px;
   border-top: 1px solid #42BE71;
   border-bottom: 1px solid #42BE71;
-  margin: 30px 5px 20px 5px;
+  margin: 40px 5px 20px 5px;
 `;
 
 const Container = styled.div`
@@ -61,7 +61,7 @@ const MenuWrapper = styled.div`
 
 const BottomContainer = styled.div`
   flex-direction:column;
-  height: 300px;
+  height: 290px;
   position: relative;
   display: flex;
   align-items: flex-start;
