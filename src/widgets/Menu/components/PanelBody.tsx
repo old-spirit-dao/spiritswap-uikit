@@ -82,11 +82,6 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, cakePr
   return (
     <Container>
       <Div>
-      {isPushed ? 
-        <Price>
-          <CakePrice cakePriceUsd={cakePriceUsd} />
-        </Price>
-       : null}
        </Div>
       {links.map((entry) => {
         const Icon = Icons[entry.icon];
