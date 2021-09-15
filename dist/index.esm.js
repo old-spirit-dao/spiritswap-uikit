@@ -2768,14 +2768,14 @@ var LangSelector = function (_a) {
 };
 var LangSelector$1 = React.memo(LangSelector, function (prev, next) { return prev.currentLang === next.currentLang; });
 
-var Container$3 = styled.div(templateObject_1$G || (templateObject_1$G = __makeTemplateObject(["\n  flex: none;\n  padding: 8px 0;\n\n  background: ", ";\n  border-top: solid 1px #42d784;\n //  border-bottom: solid 1px #42d784;\n"], ["\n  flex: none;\n  padding: 8px 0;\n\n  background: ", ";\n  border-top: solid 1px #42d784;\n //  border-bottom: solid 1px #42d784;\n"])), function (_a) {
+var Container$3 = styled.div(templateObject_1$G || (templateObject_1$G = __makeTemplateObject(["\n  flex: none;\n  padding: 8px 0;\n  background: ", ";\n  border-top: solid 1px #42d784;\n  border-bottom: solid 1px #42d784;\n"], ["\n  flex: none;\n  padding: 8px 0;\n  background: ", ";\n  border-top: solid 1px #42d784;\n  border-bottom: solid 1px #42d784;\n"])), function (_a) {
     var theme = _a.theme;
     return (theme.isDark ? "#161f33" : "#E6FDFF");
 });
-styled.div(templateObject_2$g || (templateObject_2$g = __makeTemplateObject(["\n height: 43px;\n margin: 40px 5px 25px 5px;\n\n"], ["\n height: 43px;\n margin: 40px 5px 25px 5px;\n\n"])));
+styled.div(templateObject_2$g || (templateObject_2$g = __makeTemplateObject(["\n height: 43px;\n margin: 40px 5px 25px 5px;\n"], ["\n height: 43px;\n margin: 40px 5px 25px 5px;\n"])));
 var SettingsEntry = styled.div(templateObject_3$a || (templateObject_3$a = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  //justify-content: space-between;\n  justify-content: flex-start;\n  height: ", "px;\n  //padding: 0 8px;\n"], ["\n  display: flex;\n  align-items: center;\n  //justify-content: space-between;\n  justify-content: flex-start;\n  height: ", "px;\n  //padding: 0 8px;\n"])), MENU_ENTRY_HEIGHT);
 var SocialEntry = styled.div(templateObject_4$4 || (templateObject_4$4 = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  height: ", "px;\n  padding: 0 8px;\n"], ["\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  height: ", "px;\n  padding: 0 8px;\n"])), MENU_ENTRY_HEIGHT);
-var Price = styled.div(templateObject_5$2 || (templateObject_5$2 = __makeTemplateObject(["\nheight: 42px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: ", "px;\n  //padding: 0 8px;\n  border-top: 1px solid #42BE71;\n  border-bottom: 1px solid #42BE71;\n"], ["\nheight: 42px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: ", "px;\n  //padding: 0 8px;\n  border-top: 1px solid #42BE71;\n  border-bottom: 1px solid #42BE71;\n"])), PRICE_ENTRY_HEIGHT);
+var Price = styled.div(templateObject_5$2 || (templateObject_5$2 = __makeTemplateObject(["\n  height: 42px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: ", "px;\n  padding: 8px;\n  border-top: 1px solid #42BE71;\n  // border-bottom: 1px solid #42BE71;\n"], ["\n  height: 42px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: ", "px;\n  padding: 8px;\n  border-top: 1px solid #42BE71;\n  // border-bottom: 1px solid #42BE71;\n"])), PRICE_ENTRY_HEIGHT);
 var PanelFooter = function (_a) {
     var isPushed = _a.isPushed, pushNav = _a.pushNav; _a.toggleTheme; _a.isDark; var cakePriceUsd = _a.cakePriceUsd, currentLang = _a.currentLang, langs = _a.langs, setLang = _a.setLang;
     if (!isPushed) {
