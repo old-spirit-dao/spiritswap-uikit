@@ -39,9 +39,10 @@ const Container = styled.div`
   height: 100%;
   margin-top: 72px;
 `;
+
 const Div = styled.div`
- height: 45px;
- margin: 40px 5px 20px 5px;
+ height: 43px;
+ margin: 40px 5px 25px 5px;
 
 `;
 
@@ -63,9 +64,10 @@ const MenuWrapper = styled.div`
   display: flex;
   align-items: center;
 `;
+
 const BottomContainer = styled.div`
   flex-direction:column;
-  margin-top: 45%;
+  margin-top: 40%;
   position: relative;
   display: flex;
   align-items: flex-start;
