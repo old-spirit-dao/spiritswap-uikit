@@ -13,6 +13,7 @@ import { MENU_HEIGHT, SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL } from "./config
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
+  background-color: violet;
 `;
 
 const StyledNav = styled.nav<{ showMenu: boolean; isPushed: boolean }>`

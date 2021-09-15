@@ -2579,14 +2579,9 @@ var links = [
 ];
 var socials = [
     {
-        label: "Youtube",
-        icon: "YoutubeIcon",
-        href: "https://www.youtube.com/channel/UCrKLtNctO0obN4-bDMGlFuQ/featured",
-    },
-    {
-        label: "Telegram",
-        icon: "TelegramIcon",
-        href: "https://t.me/spirit_swap",
+        label: "Twitter",
+        icon: "TwitterIcon",
+        href: "https://twitter.com/Spirit_Swap",
     },
     {
         label: "Discord",
@@ -2594,9 +2589,14 @@ var socials = [
         href: "https://discord.gg/8FGd4nFQdT",
     },
     {
-        label: "Twitter",
-        icon: "TwitterIcon",
-        href: "https://twitter.com/Spirit_Swap",
+        label: "Telegram",
+        icon: "TelegramIcon",
+        href: "https://t.me/spirit_swap",
+    },
+    {
+        label: "Youtube",
+        icon: "YoutubeIcon",
+        href: "https://www.youtube.com/channel/UCrKLtNctO0obN4-bDMGlFuQ/featured",
     },
 ];
 var MENU_HEIGHT = 64;
@@ -2732,7 +2732,7 @@ var CakePrice$1 = React.memo(CakePrice);
 var templateObject_1$F;
 
 var Icons$1 = IconModule;
-var SocialLinks = function () { return (React.createElement(Flex, null, socials.map(function (social, index) {
+var SocialLinks = function () { return (React.createElement(Flex, { style: { width: "100%", backgroundColor: "blue" }, justifyContent: "space-around" }, socials.map(function (social, index) {
     var Icon = Icons$1[social.icon];
     var iconProps = { width: "24px", color: "textSubtle", style: { cursor: "pointer" } };
     var mr = index < socials.length - 1 ? "7px" : 0;
@@ -3041,7 +3041,7 @@ var UserBlock = function (_a) {
 var UserBlock$1 = React.memo(UserBlock, function (prevProps, nextProps) { return prevProps.account === nextProps.account; });
 var templateObject_1$L;
 
-var Wrapper$2 = styled.div(templateObject_1$M || (templateObject_1$M = __makeTemplateObject(["\n  position: relative;\n  width: 100%;\n"], ["\n  position: relative;\n  width: 100%;\n"])));
+var Wrapper$2 = styled.div(templateObject_1$M || (templateObject_1$M = __makeTemplateObject(["\n  position: relative;\n  width: 100%;\n  background-color: violet;\n"], ["\n  position: relative;\n  width: 100%;\n  background-color: violet;\n"])));
 var StyledNav = styled.nav(templateObject_2$i || (templateObject_2$i = __makeTemplateObject(["\n  position: fixed;\n  //top: ", ";\n  top: 0;\n  left: 0;\n  transition: 0.2s;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding-left: ", ";\n  padding-right: 16px;\n  width: 100%;\n  height: ", "px;\n  //border-bottom: ", ";\n  border-bottom: none;\n  z-index: 20;\n  transform: translate3d(0, 0, 0);\n"], ["\n  position: fixed;\n  //top: ", ";\n  top: 0;\n  left: 0;\n  transition: 0.2s;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding-left: ", ";\n  padding-right: 16px;\n  width: 100%;\n  height: ", "px;\n  //border-bottom: ", ";\n  border-bottom: none;\n  z-index: 20;\n  transform: translate3d(0, 0, 0);\n"])), function (_a) {
     var showMenu = _a.showMenu;
     return (showMenu ? 0 : "-" + MENU_HEIGHT + "px");
