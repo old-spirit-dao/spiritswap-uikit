@@ -67,7 +67,7 @@ const MenuWrapper = styled.div`
 
 const BottomContainer = styled.div`
   flex-direction:column;
-  margin-top: 40%;
+  margin-top: 32%;
   position: relative;
   display: flex;
   align-items: flex-start;
