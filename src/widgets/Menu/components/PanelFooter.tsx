@@ -13,17 +13,20 @@ interface Props extends PanelProps, PushedProps {}
 
 const Container = styled.div`
   flex: none;
-  padding: 8px 4px;
-  background-color: ${({ theme }) => theme.nav.background};
-  border-top: solid 2px rgba(133, 133, 133, 0.1);
+  padding: 8px 0;
+
+  background: ${({ theme }) => (theme.isDark ? "#161f33" : "#E6FDFF")};
+  border-top: solid 1px #42d784;
+  border-bottom: solid 1px #42d784;
 `;
 
 const SettingsEntry = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  //justify-content: space-between;
+  justify-content: flex-start;
   height: ${MENU_ENTRY_HEIGHT}px;
-  padding: 0 8px;
+  //padding: 0 8px;
 `;
 
 const SocialEntry = styled.div`
@@ -31,7 +34,7 @@ const SocialEntry = styled.div`
   align-items: center;
   justify-content: space-between;
   height: ${MENU_ENTRY_HEIGHT}px;
-  padding: 0 16px;
+  padding: 0 8px;
 `;
 
 const PanelFooter: React.FC<Props> = ({
@@ -61,7 +64,8 @@ const PanelFooter: React.FC<Props> = ({
         <SocialLinks />
       </SocialEntry>
       <SettingsEntry>
-        <ThemeSwitcher isDark={isDark} toggleTheme={toggleTheme} />
+        {/* FOR ACTIVATE AGAIN, CHANGE THE THEME COLORS */}
+        {/* <ThemeSwitcher isDark={isDark} toggleTheme={toggleTheme} /> */}
         <LangSelector currentLang={currentLang} langs={langs} setLang={setLang} />
       </SettingsEntry>
     </Container>

@@ -6,12 +6,12 @@ import { ButtonMenuItemProps } from "./types";
 
 interface InactiveButtonProps extends BaseButtonProps {
   forwardedAs: BaseButtonProps["as"];
-  colorKey: "primary" | "textSubtle";
+  $colorKey: "primary" | "textSubtle";
 }
 
 const InactiveButton: PolymorphicComponent<InactiveButtonProps, "button"> = styled(Button)<InactiveButtonProps>`
   background-color: transparent;
-  color: ${({ theme, colorKey }) => theme.colors[colorKey]};
+  color: ${({ theme, $colorKey }) => theme.colors[$colorKey]};
   &:hover:not(:disabled):not(:active) {
     background-color: transparent;
   }
@@ -19,7 +19,7 @@ const InactiveButton: PolymorphicComponent<InactiveButtonProps, "button"> = styl
 
 const ButtonMenuItem: PolymorphicComponent<ButtonMenuItemProps, "button"> = ({
   isActive = false,
-  variant = variants.PRIMARY,
+  variant = variants.TOGGLE,
   as,
   ...props
 }: ButtonMenuItemProps) => {
@@ -28,7 +28,7 @@ const ButtonMenuItem: PolymorphicComponent<ButtonMenuItemProps, "button"> = ({
       <InactiveButton
         forwardedAs={as}
         variant="tertiary"
-        colorKey={variant === variants.PRIMARY ? "primary" : "textSubtle"}
+        $colorKey={variant === variants.TOGGLE ? "textSubtle" : "primary"}
         {...props}
       />
     );

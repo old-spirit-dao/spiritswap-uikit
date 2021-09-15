@@ -8,7 +8,6 @@ import Logo from "./components/Logo";
 import Panel from "./components/Panel";
 import UserBlock from "./components/UserBlock";
 import { NavProps } from "./types";
-import Avatar from "./components/Avatar";
 import { MENU_HEIGHT, SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL } from "./config";
 
 const Wrapper = styled.div`
@@ -16,20 +15,21 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-const StyledNav = styled.nav<{ showMenu: boolean }>`
+const StyledNav = styled.nav<{ showMenu: boolean; isPushed: boolean }>`
   position: fixed;
-  top: ${({ showMenu }) => (showMenu ? 0 : `-${MENU_HEIGHT}px`)};
+  //top: ${({ showMenu }) => (showMenu ? 0 : `-${MENU_HEIGHT}px`)};
+  top: 0;
   left: 0;
-  transition: top 0.2s;
+  transition: 0.2s;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 8px;
+  padding-left: ${({ isPushed }) => (isPushed ? "8px" : "0")};
   padding-right: 16px;
   width: 100%;
   height: ${MENU_HEIGHT}px;
-  background-color: ${({ theme }) => theme.nav.background};
-  border-bottom: solid 2px rgba(133, 133, 133, 0.1);
+  //border-bottom: ${({ showMenu }) => (showMenu ? "solid 2px rgba(133, 133, 133, 0.1)" : "none")};
+  border-bottom: none;
   z-index: 20;
   transform: translate3d(0, 0, 0);
 `;
@@ -41,8 +41,9 @@ const BodyWrapper = styled.div`
 
 const Inner = styled.div<{ isPushed: boolean; showMenu: boolean }>`
   flex-grow: 1;
-  margin-top: ${({ showMenu }) => (showMenu ? `${MENU_HEIGHT}px` : 0)};
-  transition: margin-top 0.2s;
+  //margin-top: ${({ showMenu }) => (showMenu ? `${MENU_HEIGHT}px` : 0)};
+  margin-top: ${({ showMenu }) => (showMenu ? `${MENU_HEIGHT}px` : `${MENU_HEIGHT}px`)};
+  //colortransition: margin-top 0.2s;
   transform: translate3d(0, 0, 0);
   max-width: 100%;
 
@@ -115,16 +116,14 @@ const Menu: React.FC<NavProps> = ({
 
   return (
     <Wrapper>
-      <StyledNav showMenu={showMenu}>
+      <StyledNav showMenu={showMenu} isPushed={isPushed}>
         <Logo
           isPushed={isPushed}
           togglePush={() => setIsPushed((prevState: boolean) => !prevState)}
           isDark={isDark}
           href={homeLink?.href ?? "/"}
         />
-        <Flex>
-          <UserBlock account={account} login={login} logout={logout} />
-        </Flex>
+        <Flex>{showMenu ? <UserBlock account={account} login={login} logout={logout} isDark={isDark} /> : <></>}</Flex>
       </StyledNav>
       <BodyWrapper>
         <Panel

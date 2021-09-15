@@ -6,6 +6,7 @@ export interface Props {
   secondary?: boolean;
   isActive?: boolean;
   theme: DefaultTheme;
+  inSpirit?: string;
 }
 
 const rainbowAnimation = keyframes`
@@ -18,8 +19,9 @@ const rainbowAnimation = keyframes`
   }
 `;
 
-const LinkLabel = styled.div<{ isPushed: boolean }>`
-  color: ${({ isPushed, theme }) => (isPushed ? theme.colors.textSubtle : "transparent")};
+const LinkLabel = styled.div<{ isPushed: boolean; inSpirit: string }>`
+  color: ${({ isPushed, theme, inSpirit }) =>
+    (!isPushed && "transparent") || (inSpirit === "noInSpirit" && theme.colors.textSubtle) || "#35b9c0"};
   transition: color 0.4s;
   flex-grow: 1;
 `;
@@ -33,7 +35,7 @@ const MenuEntry = styled.div<Props>`
   font-size: ${({ secondary }) => (secondary ? "14px" : "16px")};
   background-color: ${({ secondary, theme }) => (secondary ? theme.colors.background : "transparent")};
   color: ${({ theme }) => theme.colors.textSubtle};
-  box-shadow: ${({ isActive, theme }) => (isActive ? `inset 4px 0px 0px ${theme.colors.primary}` : "none")};
+  box-shadow: ${({ isActive, theme }) => (isActive ? `inset 0px 0px 10px ${theme.colors.primary}` : "none")};
 
   a {
     display: flex;
@@ -47,7 +49,8 @@ const MenuEntry = styled.div<Props>`
   }
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.tertiary};
+    background-color: ${({ theme, inSpirit }) =>
+      inSpirit === "noInSpirit" ? theme.colors.tertiary : "rgba(96, 213, 220, 0.15)"};
   }
 
   // Safari fix

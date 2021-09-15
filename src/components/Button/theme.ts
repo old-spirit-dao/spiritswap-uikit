@@ -37,8 +37,8 @@ export const styleVariants = {
     color: "primary",
   },
   [variants.SUBTLE]: {
-    backgroundColor: "textSubtle",
-    color: "white",
+    backgroundColor: "farmBackground",
+    color: "text",
   },
   [variants.DANGER]: {
     backgroundColor: "failure",
@@ -52,5 +52,9 @@ export const styleVariants = {
     backgroundColor: "transparent",
     color: "primary",
     boxShadow: "none",
+  },
+  [variants.TOGGLE]: {
+    backgroundColor: "toggleBackground",
+    color: "text",
   },
 };
