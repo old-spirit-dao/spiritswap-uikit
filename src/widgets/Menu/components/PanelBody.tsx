@@ -21,8 +21,7 @@ const Icons = (IconModule as unknown) as { [key: string]: React.FC<SvgProps> };
 const Price = styled.div`
   display: flex;
   align-items: center;
-  //justify-content: space-between;
-  justify-content: flex-start;
+  justify-content: center;
   height: ${MENU_ENTRY_HEIGHT}px;
   //padding: 0 8px;
   border-top: 1px solid #42BE71;
@@ -58,7 +57,7 @@ const MenuWrapper = styled.div`
   align-items: center;
 `;
 
-const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links , cakePriceUsd}) => {
+const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, cakePriceUsd }) => {
   const location = useLocation();
 
   // Close the menu when a user clicks a link on mobile
@@ -66,6 +65,9 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links , cakeP
 
   return (
     <Container>
+      <Price>
+        <CakePrice cakePriceUsd={cakePriceUsd} />
+      </Price>
       {links.map((entry) => {
         const Icon = Icons[entry.icon];
         const iconElement = <Icon width="24px" mr="8px" />;
@@ -78,10 +80,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links , cakeP
 
           return (
             <>
-              <Price>
-                <CakePrice cakePriceUsd={cakePriceUsd} />
-              </Price>
-              <Accordion
+            {/*   <Accordion
                 key={entry.label}
                 isPushed={isPushed}
                 pushNav={pushNav}
@@ -90,7 +89,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links , cakeP
                 initialOpenState={initialOpenState}
                 className={calloutClass}
                 inSpirit={inSpiritLinks}
-              >
+              > */}
                 {isPushed &&
                   entry.items.map((item) => (
                     <MenuEntry
@@ -105,7 +104,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links , cakeP
                       </MenuLink>
                     </MenuEntry>
                   ))}
-              </Accordion>
+              {/* </Accordion> */}
             </>
           );
         }
