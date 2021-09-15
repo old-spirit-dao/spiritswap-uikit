@@ -2697,9 +2697,9 @@ var MenuLink = function (_a) {
 
 var PriceLink = styled.span(templateObject_1$E || (templateObject_1$E = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n\n  svg {\n    transition: transform 0.3s;\n  }\n"], ["\n  display: flex;\n  align-items: center;\n\n  svg {\n    transition: transform 0.3s;\n  }\n"])));
 var CakePrice = function (_a) {
-    var cakePriceUsd = _a.cakePriceUsd, showMenu = _a.showMenu;
+    var cakePriceUsd = _a.cakePriceUsd, isPushed = _a.isPushed;
     return cakePriceUsd ? (React.createElement(PriceLink, null,
-        showMenu ?
+        isPushed ?
             React.createElement(Icon$x, { width: "24px", mr: "8px" })
             : null,
         React.createElement(Link, { href: "https://coinmarketcap.com/currencies/spiritswap/", style: { marginLeft: "5px", textDecoration: "none" }, target: "_blank", color: "textSubtle", bold: true }, "$" + cakePriceUsd.toFixed(3)))) : (React.createElement(Skeleton, { width: 80, height: 24 }));
@@ -2715,13 +2715,14 @@ var NewIcon = styled(Icon$1e)(templateObject_4$3 || (templateObject_4$3 = __make
 var MenuWrapper = styled.div(templateObject_5$1 || (templateObject_5$1 = __makeTemplateObject(["\n  position: relative;\n  display: flex;\n  align-items: center;\n"], ["\n  position: relative;\n  display: flex;\n  align-items: center;\n"])));
 var BottomContainer = styled.div(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  flex-direction:column;\n  margin-top: 75px;\n  position: relative;\n  display: flex;\n  align-items: flex-start;\n  justify-content: flex-end;\n"], ["\n  flex-direction:column;\n  margin-top: 75px;\n  position: relative;\n  display: flex;\n  align-items: flex-start;\n  justify-content: flex-end;\n"])));
 var PanelBody = function (_a) {
-    var isPushed = _a.isPushed, pushNav = _a.pushNav, isMobile = _a.isMobile, links = _a.links, cakePriceUsd = _a.cakePriceUsd, showMenu = _a.showMenu;
+    var isPushed = _a.isPushed, pushNav = _a.pushNav, isMobile = _a.isMobile, links = _a.links, cakePriceUsd = _a.cakePriceUsd;
     var location = useLocation();
     // Close the menu when a user clicks a link on mobile
     var handleClick = isMobile ? function () { return pushNav(false); } : undefined;
+    console.log(isPushed);
     return (React.createElement(Container$2, null,
         React.createElement(Price, null,
-            React.createElement(CakePrice$1, { showMenu: showMenu, cakePriceUsd: cakePriceUsd })),
+            React.createElement(CakePrice$1, { isPushed: isPushed, cakePriceUsd: cakePriceUsd })),
         links.map(function (entry) {
             var Icon = Icons[entry.icon];
             var iconElement = React.createElement(Icon, { width: "24px", mr: "8px" });
@@ -2730,9 +2731,10 @@ var PanelBody = function (_a) {
             if (entry.items) {
                 var itemsMatchIndex = entry.items.findIndex(function (item) { return item.href === location.pathname; });
                 entry.initialOpenState === true ? entry.initialOpenState : itemsMatchIndex >= 0;
-                return (React.createElement(BottomContainer, null, isPushed &&
-                    entry.items.map(function (item) { return (React.createElement(MenuBottomEntry, { key: item.href, secondary: true, isActive: item.href === location.pathname, onClick: handleClick, inSpirit: inSpiritLinks },
-                        React.createElement(MenuLink, { href: item.href, target: item.target }, item.label))); })));
+                return (React.createElement(React.Fragment, null,
+                    React.createElement(BottomContainer, null, isPushed &&
+                        entry.items.map(function (item) { return (React.createElement(MenuBottomEntry, { key: item.href, secondary: true, isActive: item.href === location.pathname, onClick: handleClick, inSpirit: inSpiritLinks },
+                            React.createElement(MenuLink, { href: item.href, target: item.target }, item.label))); }))));
             }
             return (React.createElement(MenuEntry, { key: entry.label, isActive: entry.href === location.pathname, className: calloutClass, inSpirit: inSpiritLinks },
                 React.createElement(MenuLink, { href: entry.href, target: entry.target, onClick: handleClick },

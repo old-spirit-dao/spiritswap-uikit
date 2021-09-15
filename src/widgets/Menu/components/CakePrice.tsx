@@ -7,7 +7,7 @@ import { Link } from "../../../components/Link";
 
 interface Props {
   cakePriceUsd?: number;
-  showMenu?:boolean
+  isPushed?:boolean
 }
 
 const PriceLink = styled.span`
@@ -19,10 +19,10 @@ const PriceLink = styled.span`
   }
 `;
 
-const CakePrice: React.FC<Props> = ({ cakePriceUsd, showMenu }) => {
+const CakePrice: React.FC<Props> = ({ cakePriceUsd, isPushed }) => {
   return cakePriceUsd ? (
     <PriceLink>
-      {showMenu ? 
+      {isPushed ? 
       <PancakeRoundIcon width="24px" mr="8px" />
       :null}
       <Link

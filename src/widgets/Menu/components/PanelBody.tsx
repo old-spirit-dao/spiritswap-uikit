@@ -69,16 +69,16 @@ const BottomContainer = styled.div`
   justify-content: flex-end;
 `;
 
-const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, cakePriceUsd, showMenu }) => {
+const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, cakePriceUsd }) => {
   const location = useLocation();
 
   // Close the menu when a user clicks a link on mobile
   const handleClick = isMobile ? () => pushNav(false) : undefined;
-
+console.log(isPushed)
   return (
     <Container>
       <Price>
-        <CakePrice showMenu={showMenu} cakePriceUsd={cakePriceUsd} />
+        <CakePrice isPushed={isPushed} cakePriceUsd={cakePriceUsd} />
       </Price>
       {links.map((entry) => {
         const Icon = Icons[entry.icon];
@@ -91,6 +91,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, cakePr
           const initialOpenState = entry.initialOpenState === true ? entry.initialOpenState : itemsMatchIndex >= 0;
 
           return (
+            <>
             <BottomContainer>
               {/*   <Accordion
                 key={entry.label}
@@ -119,6 +120,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, cakePr
                 ))}
               {/* </Accordion> */}
             </BottomContainer>
+            </>
           );
         }
         return (
