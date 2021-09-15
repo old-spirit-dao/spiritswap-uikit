@@ -22,9 +22,9 @@ const PriceLink = styled.span`
 const CakePrice: React.FC<Props> = ({ cakePriceUsd, isPushed }) => {
   return cakePriceUsd ? (
     <PriceLink>
-      {isPushed ? 
+      {isPushed ? <>
       <PancakeRoundIcon width="24px" mr="8px" />
-      :null}
+     
       <Link
         href={"https://coinmarketcap.com/currencies/spiritswap/"}
         style={{ marginLeft: "5px", textDecoration: "none" }}
@@ -32,6 +32,8 @@ const CakePrice: React.FC<Props> = ({ cakePriceUsd, isPushed }) => {
         color="textSubtle"
         bold
       >{`$${cakePriceUsd.toFixed(3)}`}</Link>
+      </>
+      :null}
     </PriceLink>
   ) : (
     <Skeleton width={80} height={24} />

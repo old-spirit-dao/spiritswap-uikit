@@ -2711,11 +2711,10 @@ var MenuLink = function (_a) {
 var PriceLink = styled__default['default'].span(templateObject_1$E || (templateObject_1$E = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n\n  svg {\n    transition: transform 0.3s;\n  }\n"], ["\n  display: flex;\n  align-items: center;\n\n  svg {\n    transition: transform 0.3s;\n  }\n"])));
 var CakePrice = function (_a) {
     var cakePriceUsd = _a.cakePriceUsd, isPushed = _a.isPushed;
-    return cakePriceUsd ? (React__default['default'].createElement(PriceLink, null,
-        isPushed ?
-            React__default['default'].createElement(Icon$x, { width: "24px", mr: "8px" })
-            : null,
-        React__default['default'].createElement(Link, { href: "https://coinmarketcap.com/currencies/spiritswap/", style: { marginLeft: "5px", textDecoration: "none" }, target: "_blank", color: "textSubtle", bold: true }, "$" + cakePriceUsd.toFixed(3)))) : (React__default['default'].createElement(Skeleton, { width: 80, height: 24 }));
+    return cakePriceUsd ? (React__default['default'].createElement(PriceLink, null, isPushed ? React__default['default'].createElement(React__default['default'].Fragment, null,
+        React__default['default'].createElement(Icon$x, { width: "24px", mr: "8px" }),
+        React__default['default'].createElement(Link, { href: "https://coinmarketcap.com/currencies/spiritswap/", style: { marginLeft: "5px", textDecoration: "none" }, target: "_blank", color: "textSubtle", bold: true }, "$" + cakePriceUsd.toFixed(3)))
+        : null)) : (React__default['default'].createElement(Skeleton, { width: 80, height: 24 }));
 };
 var CakePrice$1 = React__default['default'].memo(CakePrice);
 var templateObject_1$E;
@@ -2732,7 +2731,6 @@ var PanelBody = function (_a) {
     var location = reactRouterDom.useLocation();
     // Close the menu when a user clicks a link on mobile
     var handleClick = isMobile ? function () { return pushNav(false); } : undefined;
-    console.log(isPushed);
     return (React__default['default'].createElement(Container$2, null,
         React__default['default'].createElement(Price, null,
             React__default['default'].createElement(CakePrice$1, { isPushed: isPushed, cakePriceUsd: cakePriceUsd })),
