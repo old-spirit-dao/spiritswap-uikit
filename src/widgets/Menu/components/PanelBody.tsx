@@ -21,6 +21,7 @@ interface Props extends PanelProps, PushedProps {
 const Icons = (IconModule as unknown) as { [key: string]: React.FC<SvgProps> };
 
 const Price = styled.div`
+height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,7 +29,6 @@ const Price = styled.div`
   //padding: 0 8px;
   border-top: 1px solid #42BE71;
   border-bottom: 1px solid #42BE71;
-  margin: 40px 5px 20px 5px;
 `;
 
 const Container = styled.div`
@@ -38,6 +38,11 @@ const Container = styled.div`
   overflow-x: hidden;
   height: 100%;
   margin-top: 72px;
+`;
+const Div = styled.div`
+ height: 45px;
+ margin: 40px 5px 20px 5px;
+
 `;
 
 const rotate = keyframes`
@@ -60,7 +65,7 @@ const MenuWrapper = styled.div`
 `;
 const BottomContainer = styled.div`
   flex-direction:column;
-  margin-top: 50%;
+  margin-top: 45%;
   position: relative;
   display: flex;
   align-items: flex-start;
@@ -74,11 +79,11 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, cakePr
   const handleClick = isMobile ? () => pushNav(false) : undefined;
   return (
     <Container>
-      {isPushed ? <>
+      {isPushed ? <Div>
         <Price>
           <CakePrice cakePriceUsd={cakePriceUsd} />
         </Price>
-      </> : null}
+      </Div> : null}
       {links.map((entry) => {
         const Icon = Icons[entry.icon];
         const iconElement = <Icon width="24px" mr="8px" />;

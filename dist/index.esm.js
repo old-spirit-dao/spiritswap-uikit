@@ -2706,19 +2706,20 @@ var CakePrice$1 = React.memo(CakePrice);
 var templateObject_1$E;
 
 var Icons = IconModule;
-var Price = styled.div(templateObject_1$F || (templateObject_1$F = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: ", "px;\n  //padding: 0 8px;\n  border-top: 1px solid #42BE71;\n  border-bottom: 1px solid #42BE71;\n  margin: 40px 5px 20px 5px;\n"], ["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: ", "px;\n  //padding: 0 8px;\n  border-top: 1px solid #42BE71;\n  border-bottom: 1px solid #42BE71;\n  margin: 40px 5px 20px 5px;\n"])), PRICE_ENTRY_HEIGHT);
+var Price = styled.div(templateObject_1$F || (templateObject_1$F = __makeTemplateObject(["\nheight: 42px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: ", "px;\n  //padding: 0 8px;\n  border-top: 1px solid #42BE71;\n  border-bottom: 1px solid #42BE71;\n"], ["\nheight: 42px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: ", "px;\n  //padding: 0 8px;\n  border-top: 1px solid #42BE71;\n  border-bottom: 1px solid #42BE71;\n"])), PRICE_ENTRY_HEIGHT);
 var Container$2 = styled.div(templateObject_2$f || (templateObject_2$f = __makeTemplateObject(["\n  display: flex;\n  flex-direction: column;\n  overflow-y: auto;\n  overflow-x: hidden;\n  height: 100%;\n  margin-top: 72px;\n"], ["\n  display: flex;\n  flex-direction: column;\n  overflow-y: auto;\n  overflow-x: hidden;\n  height: 100%;\n  margin-top: 72px;\n"])));
-var rotate$1 = keyframes(templateObject_3$9 || (templateObject_3$9 = __makeTemplateObject(["\n    0% { transform: translate(0,  0px); }\n    50%  { transform: translate(8px, 0); }\n    100%   { transform: translate(0, -0px); }  \n  }\n"], ["\n    0% { transform: translate(0,  0px); }\n    50%  { transform: translate(8px, 0); }\n    100%   { transform: translate(0, -0px); }  \n  }\n"])));
-var NewIcon = styled(Icon$1e)(templateObject_4$3 || (templateObject_4$3 = __makeTemplateObject(["\n  position: absolute;\n  left: 155px;\n  width: 40px;\n  margin-right: 45px;\n  animation: ", " 6s infinite;\n"], ["\n  position: absolute;\n  left: 155px;\n  width: 40px;\n  margin-right: 45px;\n  animation: ", " 6s infinite;\n"])), rotate$1);
-var MenuWrapper = styled.div(templateObject_5$1 || (templateObject_5$1 = __makeTemplateObject(["\n  position: relative;\n  display: flex;\n  align-items: center;\n"], ["\n  position: relative;\n  display: flex;\n  align-items: center;\n"])));
-var BottomContainer = styled.div(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  flex-direction:column;\n  margin-top: 50%;\n  position: relative;\n  display: flex;\n  align-items: flex-start;\n  justify-content: flex-end;\n"], ["\n  flex-direction:column;\n  margin-top: 50%;\n  position: relative;\n  display: flex;\n  align-items: flex-start;\n  justify-content: flex-end;\n"])));
+var Div = styled.div(templateObject_3$9 || (templateObject_3$9 = __makeTemplateObject(["\n height: 45px;\n margin: 40px 5px 20px 5px;\n\n"], ["\n height: 45px;\n margin: 40px 5px 20px 5px;\n\n"])));
+var rotate$1 = keyframes(templateObject_4$3 || (templateObject_4$3 = __makeTemplateObject(["\n    0% { transform: translate(0,  0px); }\n    50%  { transform: translate(8px, 0); }\n    100%   { transform: translate(0, -0px); }  \n  }\n"], ["\n    0% { transform: translate(0,  0px); }\n    50%  { transform: translate(8px, 0); }\n    100%   { transform: translate(0, -0px); }  \n  }\n"])));
+var NewIcon = styled(Icon$1e)(templateObject_5$1 || (templateObject_5$1 = __makeTemplateObject(["\n  position: absolute;\n  left: 155px;\n  width: 40px;\n  margin-right: 45px;\n  animation: ", " 6s infinite;\n"], ["\n  position: absolute;\n  left: 155px;\n  width: 40px;\n  margin-right: 45px;\n  animation: ", " 6s infinite;\n"])), rotate$1);
+var MenuWrapper = styled.div(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  position: relative;\n  display: flex;\n  align-items: center;\n"], ["\n  position: relative;\n  display: flex;\n  align-items: center;\n"])));
+var BottomContainer = styled.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  flex-direction:column;\n  margin-top: 45%;\n  position: relative;\n  display: flex;\n  align-items: flex-start;\n  justify-content: flex-end;\n"], ["\n  flex-direction:column;\n  margin-top: 45%;\n  position: relative;\n  display: flex;\n  align-items: flex-start;\n  justify-content: flex-end;\n"])));
 var PanelBody = function (_a) {
     var isPushed = _a.isPushed, pushNav = _a.pushNav, isMobile = _a.isMobile, links = _a.links, cakePriceUsd = _a.cakePriceUsd;
     var location = useLocation();
     // Close the menu when a user clicks a link on mobile
     var handleClick = isMobile ? function () { return pushNav(false); } : undefined;
     return (React.createElement(Container$2, null,
-        isPushed ? React.createElement(React.Fragment, null,
+        isPushed ? React.createElement(Div, null,
             React.createElement(Price, null,
                 React.createElement(CakePrice$1, { cakePriceUsd: cakePriceUsd }))) : null,
         links.map(function (entry) {
@@ -2748,7 +2749,7 @@ var PanelBody = function (_a) {
                             entry.label === "Lend/Borrow" ? (React.createElement(NewIcon, null)) : null))));
         })));
 };
-var templateObject_1$F, templateObject_2$f, templateObject_3$9, templateObject_4$3, templateObject_5$1, templateObject_6;
+var templateObject_1$F, templateObject_2$f, templateObject_3$9, templateObject_4$3, templateObject_5$1, templateObject_6, templateObject_7;
 
 var Icons$1 = IconModule;
 var SocialLinks = function () { return (React.createElement(Flex, { style: { width: "100%" }, justifyContent: "space-around" }, socials.map(function (social, index) {
