@@ -46,7 +46,6 @@ const rotate = keyframes`
     100%   { transform: translate(0, -0px); }  
   }
 `;
-
 const NewIcon = styled(BadgeNewIcon)`
   position: absolute;
   left: 155px;
@@ -59,10 +58,9 @@ const MenuWrapper = styled.div`
   display: flex;
   align-items: center;
 `;
-
 const BottomContainer = styled.div`
   flex-direction:column;
-  margin-top: 75px;
+  margin-top: 50%;
   position: relative;
   display: flex;
   align-items: flex-start;
@@ -76,9 +74,11 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, cakePr
   const handleClick = isMobile ? () => pushNav(false) : undefined;
   return (
     <Container>
-      <Price>
-        <CakePrice isPushed={isPushed} cakePriceUsd={cakePriceUsd} />
-      </Price>
+      {isPushed ? <>
+        <Price>
+          <CakePrice cakePriceUsd={cakePriceUsd} />
+        </Price>
+      </> : null}
       {links.map((entry) => {
         const Icon = Icons[entry.icon];
         const iconElement = <Icon width="24px" mr="8px" />;
@@ -91,8 +91,8 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, cakePr
 
           return (
             <>
-            <BottomContainer>
-              {/*   <Accordion
+              <BottomContainer>
+                {/*   <Accordion
                 key={entry.label}
                 isPushed={isPushed}
                 pushNav={pushNav}
@@ -103,22 +103,22 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, cakePr
                 inSpirit={inSpiritLinks}
               > */}
 
-              {isPushed &&
-                entry.items.map((item) => (
-                  <MenuBottomEntry
-                    key={item.href}
-                    secondary
-                    isActive={item.href === location.pathname}
-                    onClick={handleClick}
-                    inSpirit={inSpiritLinks}
-                  >
-                    <MenuLink href={item.href} target={item.target}>
-                      {item.label}
-                    </MenuLink>
-                  </MenuBottomEntry>
-                ))}
-              {/* </Accordion> */}
-            </BottomContainer>
+                {isPushed &&
+                  entry.items.map((item) => (
+                    <MenuBottomEntry
+                      key={item.href}
+                      secondary
+                      isActive={item.href === location.pathname}
+                      onClick={handleClick}
+                      inSpirit={inSpiritLinks}
+                    >
+                      <MenuLink href={item.href} target={item.target}>
+                        {item.label}
+                      </MenuLink>
+                    </MenuBottomEntry>
+                  ))}
+                {/* </Accordion> */}
+              </BottomContainer>
             </>
           );
         }

@@ -7,7 +7,6 @@ import { Link } from "../../../components/Link";
 
 interface Props {
   cakePriceUsd?: number;
-  isPushed?:boolean
 }
 
 const PriceLink = styled.span`
@@ -19,12 +18,10 @@ const PriceLink = styled.span`
   }
 `;
 
-const CakePrice: React.FC<Props> = ({ cakePriceUsd, isPushed }) => {
+const CakePrice: React.FC<Props> = ({ cakePriceUsd }) => {
   return cakePriceUsd ? (
     <PriceLink>
-      {isPushed ? <>
       <PancakeRoundIcon width="24px" mr="8px" />
-     
       <Link
         href={"https://coinmarketcap.com/currencies/spiritswap/"}
         style={{ marginLeft: "5px", textDecoration: "none" }}
@@ -32,8 +29,6 @@ const CakePrice: React.FC<Props> = ({ cakePriceUsd, isPushed }) => {
         color="textSubtle"
         bold
       >{`$${cakePriceUsd.toFixed(3)}`}</Link>
-      </>
-      :null}
     </PriceLink>
   ) : (
     <Skeleton width={80} height={24} />
