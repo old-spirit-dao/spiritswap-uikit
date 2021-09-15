@@ -29,7 +29,7 @@ const LinkLabelBottom = styled.div<{ isPushed: boolean; inSpirit: string }>`
 const MenuBottomEntry = styled.div<Props>`
   cursor: pointer;
   display: flex;
-  align-items: center;
+    align-items: flex-start;
   height: ${ MENU_BOTTOM_ENTRY_HEIGHT}px;
   padding: ${({ secondary }) => (secondary ? "18px 16px" : "18px 16px")};
   font-size: 15px; // ${({ secondary }) => (secondary ? "14px" : "16px")};

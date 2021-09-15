@@ -60,6 +60,7 @@ const MenuWrapper = styled.div`
 `;
 
 const BottomContainer = styled.div`
+  flex-direction:column;
   height: 300px;
   position: relative;
   display: flex;
