@@ -5,12 +5,13 @@ import { SvgProps } from "../../../components/Svg";
 import * as IconModule from "../icons";
 import Accordion from "./Accordion";
 import { MenuEntry, LinkLabel } from "./MenuEntry";
+import { MenuBottomEntry, LinkBottomLabel } from "./MenuBottomEntry";
 import MenuLink from "./MenuLink";
 import { PanelProps, PushedProps } from "../types";
 import { BadgeNewIcon } from "../icons";
 import CakePrice from "./CakePrice";
 import SocialLinks from "./SocialLinks";
-import { MENU_ENTRY_HEIGHT } from "../config";
+import { PRICE_ENTRY_HEIGHT } from "../config";
 
 interface Props extends PanelProps, PushedProps {
   isMobile: boolean;
@@ -22,10 +23,11 @@ const Price = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: ${MENU_ENTRY_HEIGHT}px;
+  height: ${PRICE_ENTRY_HEIGHT}px;
   //padding: 0 8px;
   border-top: 1px solid #42BE71;
   border-bottom: 1px solid #42BE71;
+  margin: 30px 5px 20px 5px;
 `;
 
 const Container = styled.div`
@@ -57,6 +59,14 @@ const MenuWrapper = styled.div`
   align-items: center;
 `;
 
+const BottomContainer = styled.div`
+  flex-direction: column;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`;
+
 const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, cakePriceUsd }) => {
   const location = useLocation();
 
@@ -79,7 +89,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, cakePr
           const initialOpenState = entry.initialOpenState === true ? entry.initialOpenState : itemsMatchIndex >= 0;
 
           return (
-            <>
+            <BottomContainer>
             {/*   <Accordion
                 key={entry.label}
                 isPushed={isPushed}
@@ -92,7 +102,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, cakePr
               > */}
                 {isPushed &&
                   entry.items.map((item) => (
-                    <MenuEntry
+                    <MenuBottomEntry
                       key={item.href}
                       secondary
                       isActive={item.href === location.pathname}
@@ -102,10 +112,10 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, cakePr
                       <MenuLink href={item.href} target={item.target}>
                         {item.label}
                       </MenuLink>
-                    </MenuEntry>
+                    </MenuBottomEntry>
                   ))}
               {/* </Accordion> */}
-            </>
+            </BottomContainer>
           );
         }
         return (
