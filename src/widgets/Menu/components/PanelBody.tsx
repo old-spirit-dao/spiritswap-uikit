@@ -81,8 +81,6 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, cakePr
   const handleClick = isMobile ? () => pushNav(false) : undefined;
   return (
     <Container>
-      <Div>
-       </Div>
       {links.map((entry) => {
         const Icon = Icons[entry.icon];
         const iconElement = <Icon width="24px" mr="8px" />;

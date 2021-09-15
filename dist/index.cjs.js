@@ -2711,7 +2711,7 @@ var MenuLink = function (_a) {
 var Icons = IconModule;
 styled__default['default'].div(templateObject_1$E || (templateObject_1$E = __makeTemplateObject(["\nheight: 42px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: ", "px;\n  //padding: 0 8px;\n  border-top: 1px solid #42BE71;\n  border-bottom: 1px solid #42BE71;\n"], ["\nheight: 42px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: ", "px;\n  //padding: 0 8px;\n  border-top: 1px solid #42BE71;\n  border-bottom: 1px solid #42BE71;\n"])), PRICE_ENTRY_HEIGHT);
 var Container$2 = styled__default['default'].div(templateObject_2$f || (templateObject_2$f = __makeTemplateObject(["\n  display: flex;\n  flex-direction: column;\n  overflow-y: auto;\n  overflow-x: hidden;\n  height: 100%;\n  margin-top: 72px;\n"], ["\n  display: flex;\n  flex-direction: column;\n  overflow-y: auto;\n  overflow-x: hidden;\n  height: 100%;\n  margin-top: 72px;\n"])));
-var Div = styled__default['default'].div(templateObject_3$9 || (templateObject_3$9 = __makeTemplateObject(["\n height: 43px;\n margin: 40px 5px 25px 5px;\n\n"], ["\n height: 43px;\n margin: 40px 5px 25px 5px;\n\n"])));
+styled__default['default'].div(templateObject_3$9 || (templateObject_3$9 = __makeTemplateObject(["\n height: 43px;\n margin: 40px 5px 25px 5px;\n\n"], ["\n height: 43px;\n margin: 40px 5px 25px 5px;\n\n"])));
 var rotate$1 = styled.keyframes(templateObject_4$3 || (templateObject_4$3 = __makeTemplateObject(["\n    0% { transform: translate(0,  0px); }\n    50%  { transform: translate(8px, 0); }\n    100%   { transform: translate(0, -0px); }  \n  }\n"], ["\n    0% { transform: translate(0,  0px); }\n    50%  { transform: translate(8px, 0); }\n    100%   { transform: translate(0, -0px); }  \n  }\n"])));
 var NewIcon = styled__default['default'](Icon$1e)(templateObject_5$1 || (templateObject_5$1 = __makeTemplateObject(["\n  position: absolute;\n  left: 155px;\n  width: 40px;\n  margin-right: 45px;\n  animation: ", " 6s infinite;\n"], ["\n  position: absolute;\n  left: 155px;\n  width: 40px;\n  margin-right: 45px;\n  animation: ", " 6s infinite;\n"])), rotate$1);
 var MenuWrapper = styled__default['default'].div(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  position: relative;\n  display: flex;\n  align-items: center;\n"], ["\n  position: relative;\n  display: flex;\n  align-items: center;\n"])));
@@ -2721,34 +2721,32 @@ var PanelBody = function (_a) {
     var location = reactRouterDom.useLocation();
     // Close the menu when a user clicks a link on mobile
     var handleClick = isMobile ? function () { return pushNav(false); } : undefined;
-    return (React__default['default'].createElement(Container$2, null,
-        React__default['default'].createElement(Div, null),
-        links.map(function (entry) {
-            var Icon = Icons[entry.icon];
-            var iconElement = React__default['default'].createElement(Icon, { width: "24px", mr: "8px" });
-            var calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
-            var inSpiritLinks = entry.label === "inSpirit" || entry.label === "Boosted Farms" ? "inSpirit" : "noInSpirit";
-            if (entry.items) {
-                var itemsMatchIndex = entry.items.findIndex(function (item) { return item.href === location.pathname; });
-                entry.initialOpenState === true ? entry.initialOpenState : itemsMatchIndex >= 0;
-                return (React__default['default'].createElement(React__default['default'].Fragment, null,
-                    React__default['default'].createElement(BottomContainer, null, isPushed &&
-                        entry.items.map(function (item) { return (React__default['default'].createElement(MenuBottomEntry, { key: item.href, secondary: true, isActive: item.href === location.pathname, onClick: handleClick, inSpirit: inSpiritLinks },
-                            React__default['default'].createElement(MenuLink, { href: item.href, target: item.target }, item.label))); }))));
-            }
-            return (React__default['default'].createElement(MenuEntry, { key: entry.label, isActive: entry.href === location.pathname, className: calloutClass, inSpirit: inSpiritLinks },
-                React__default['default'].createElement(MenuLink, { href: entry.href, target: entry.target, onClick: handleClick },
-                    React__default['default'].createElement(MenuWrapper, null,
-                        iconElement,
-                        React__default['default'].createElement(LinkLabelMemo, { isPushed: isPushed, inSpirit: inSpiritLinks },
-                            entry.label,
-                            " "),
-                        entry.label === "Portfolio" ||
-                            entry.label === "inSpirit" ||
-                            entry.label === "Boosted Farms" ||
-                            entry.label === "IDO" ||
-                            entry.label === "Lend/Borrow" ? (React__default['default'].createElement(NewIcon, null)) : null))));
-        })));
+    return (React__default['default'].createElement(Container$2, null, links.map(function (entry) {
+        var Icon = Icons[entry.icon];
+        var iconElement = React__default['default'].createElement(Icon, { width: "24px", mr: "8px" });
+        var calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
+        var inSpiritLinks = entry.label === "inSpirit" || entry.label === "Boosted Farms" ? "inSpirit" : "noInSpirit";
+        if (entry.items) {
+            var itemsMatchIndex = entry.items.findIndex(function (item) { return item.href === location.pathname; });
+            entry.initialOpenState === true ? entry.initialOpenState : itemsMatchIndex >= 0;
+            return (React__default['default'].createElement(React__default['default'].Fragment, null,
+                React__default['default'].createElement(BottomContainer, null, isPushed &&
+                    entry.items.map(function (item) { return (React__default['default'].createElement(MenuBottomEntry, { key: item.href, secondary: true, isActive: item.href === location.pathname, onClick: handleClick, inSpirit: inSpiritLinks },
+                        React__default['default'].createElement(MenuLink, { href: item.href, target: item.target }, item.label))); }))));
+        }
+        return (React__default['default'].createElement(MenuEntry, { key: entry.label, isActive: entry.href === location.pathname, className: calloutClass, inSpirit: inSpiritLinks },
+            React__default['default'].createElement(MenuLink, { href: entry.href, target: entry.target, onClick: handleClick },
+                React__default['default'].createElement(MenuWrapper, null,
+                    iconElement,
+                    React__default['default'].createElement(LinkLabelMemo, { isPushed: isPushed, inSpirit: inSpiritLinks },
+                        entry.label,
+                        " "),
+                    entry.label === "Portfolio" ||
+                        entry.label === "inSpirit" ||
+                        entry.label === "Boosted Farms" ||
+                        entry.label === "IDO" ||
+                        entry.label === "Lend/Borrow" ? (React__default['default'].createElement(NewIcon, null)) : null))));
+    })));
 };
 var templateObject_1$E, templateObject_2$f, templateObject_3$9, templateObject_4$3, templateObject_5$1, templateObject_6, templateObject_7;
 
@@ -2783,13 +2781,14 @@ var LangSelector = function (_a) {
 };
 var LangSelector$1 = React__default['default'].memo(LangSelector, function (prev, next) { return prev.currentLang === next.currentLang; });
 
-var Container$3 = styled__default['default'].div(templateObject_1$G || (templateObject_1$G = __makeTemplateObject(["\n  flex: none;\n  padding: 8px 0;\n\n  background: ", ";\n  border-top: solid 1px #42d784;\n  border-bottom: solid 1px #42d784;\n"], ["\n  flex: none;\n  padding: 8px 0;\n\n  background: ", ";\n  border-top: solid 1px #42d784;\n  border-bottom: solid 1px #42d784;\n"])), function (_a) {
+var Container$3 = styled__default['default'].div(templateObject_1$G || (templateObject_1$G = __makeTemplateObject(["\n  flex: none;\n  padding: 8px 0;\n\n  background: ", ";\n  border-top: solid 1px #42d784;\n //  border-bottom: solid 1px #42d784;\n"], ["\n  flex: none;\n  padding: 8px 0;\n\n  background: ", ";\n  border-top: solid 1px #42d784;\n //  border-bottom: solid 1px #42d784;\n"])), function (_a) {
     var theme = _a.theme;
     return (theme.isDark ? "#161f33" : "#E6FDFF");
 });
-var SettingsEntry = styled__default['default'].div(templateObject_2$g || (templateObject_2$g = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  //justify-content: space-between;\n  justify-content: flex-start;\n  height: ", "px;\n  //padding: 0 8px;\n"], ["\n  display: flex;\n  align-items: center;\n  //justify-content: space-between;\n  justify-content: flex-start;\n  height: ", "px;\n  //padding: 0 8px;\n"])), MENU_ENTRY_HEIGHT);
-var SocialEntry = styled__default['default'].div(templateObject_3$a || (templateObject_3$a = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  height: ", "px;\n  padding: 0 8px;\n"], ["\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  height: ", "px;\n  padding: 0 8px;\n"])), MENU_ENTRY_HEIGHT);
-var Price = styled__default['default'].div(templateObject_4$4 || (templateObject_4$4 = __makeTemplateObject(["\nheight: 42px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: ", "px;\n  //padding: 0 8px;\n  border-top: 1px solid #42BE71;\n  border-bottom: 1px solid #42BE71;\n"], ["\nheight: 42px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: ", "px;\n  //padding: 0 8px;\n  border-top: 1px solid #42BE71;\n  border-bottom: 1px solid #42BE71;\n"])), PRICE_ENTRY_HEIGHT);
+styled__default['default'].div(templateObject_2$g || (templateObject_2$g = __makeTemplateObject(["\n height: 43px;\n margin: 40px 5px 25px 5px;\n\n"], ["\n height: 43px;\n margin: 40px 5px 25px 5px;\n\n"])));
+var SettingsEntry = styled__default['default'].div(templateObject_3$a || (templateObject_3$a = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  //justify-content: space-between;\n  justify-content: flex-start;\n  height: ", "px;\n  //padding: 0 8px;\n"], ["\n  display: flex;\n  align-items: center;\n  //justify-content: space-between;\n  justify-content: flex-start;\n  height: ", "px;\n  //padding: 0 8px;\n"])), MENU_ENTRY_HEIGHT);
+var SocialEntry = styled__default['default'].div(templateObject_4$4 || (templateObject_4$4 = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  height: ", "px;\n  padding: 0 8px;\n"], ["\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  height: ", "px;\n  padding: 0 8px;\n"])), MENU_ENTRY_HEIGHT);
+var Price = styled__default['default'].div(templateObject_5$2 || (templateObject_5$2 = __makeTemplateObject(["\nheight: 42px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: ", "px;\n  //padding: 0 8px;\n  border-top: 1px solid #42BE71;\n  border-bottom: 1px solid #42BE71;\n"], ["\nheight: 42px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: ", "px;\n  //padding: 0 8px;\n  border-top: 1px solid #42BE71;\n  border-bottom: 1px solid #42BE71;\n"])), PRICE_ENTRY_HEIGHT);
 var PanelFooter = function (_a) {
     var isPushed = _a.isPushed, pushNav = _a.pushNav; _a.toggleTheme; _a.isDark; var cakePriceUsd = _a.cakePriceUsd, currentLang = _a.currentLang, langs = _a.langs, setLang = _a.setLang;
     if (!isPushed) {
@@ -2806,7 +2805,7 @@ var PanelFooter = function (_a) {
             React__default['default'].createElement(SettingsEntry, null,
                 React__default['default'].createElement(LangSelector$1, { currentLang: currentLang, langs: langs, setLang: setLang })))));
 };
-var templateObject_1$G, templateObject_2$g, templateObject_3$a, templateObject_4$4;
+var templateObject_1$G, templateObject_2$g, templateObject_3$a, templateObject_4$4, templateObject_5$2;
 
 var Wrapper$1 = styled__default['default'].a(templateObject_1$H || (templateObject_1$H = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  font-size: 20px;\n  height: fit-content;\n  margin: 0.5rem auto;\n\n  span {\n    color: white;\n    display: ", ";\n    margin-right: 1rem;\n  }\n  .logo {\n    height: 30px;\n  }\n\n  &:hover {\n    span {\n      color: rgb(96, 213, 220);\n    }\n  }\n}"], ["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  font-size: 20px;\n  height: fit-content;\n  margin: 0.5rem auto;\n\n  span {\n    color: white;\n    display: ", ";\n    margin-right: 1rem;\n  }\n  .logo {\n    height: 30px;\n  }\n\n  &:hover {\n    span {\n      color: rgb(96, 213, 220);\n    }\n  }\n}"])), function (_a) {
     var isPushed = _a.isPushed;
@@ -3103,7 +3102,7 @@ var Inner = styled__default['default'].div(templateObject_4$5 || (templateObject
     var isPushed = _a.isPushed;
     return "calc(100% - " + (isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED) + "px)";
 });
-var MobileOnlyOverlay = styled__default['default'](Overlay)(templateObject_5$2 || (templateObject_5$2 = __makeTemplateObject(["\n  position: fixed;\n  height: 100%;\n\n  ", " {\n    display: none;\n  }\n"], ["\n  position: fixed;\n  height: 100%;\n\n  ", " {\n    display: none;\n  }\n"])), function (_a) {
+var MobileOnlyOverlay = styled__default['default'](Overlay)(templateObject_5$3 || (templateObject_5$3 = __makeTemplateObject(["\n  position: fixed;\n  height: 100%;\n\n  ", " {\n    display: none;\n  }\n"], ["\n  position: fixed;\n  height: 100%;\n\n  ", " {\n    display: none;\n  }\n"])), function (_a) {
     var theme = _a.theme;
     return theme.mediaQueries.nav;
 });
@@ -3154,7 +3153,7 @@ var Menu = function (_a) {
             React__default['default'].createElement(Inner, { isPushed: isPushed, showMenu: showMenu }, children),
             React__default['default'].createElement(MobileOnlyOverlay, { show: isPushed, onClick: function () { return setIsPushed(false); }, role: "presentation" }))));
 };
-var templateObject_1$M, templateObject_2$i, templateObject_3$b, templateObject_4$5, templateObject_5$2;
+var templateObject_1$M, templateObject_2$i, templateObject_3$b, templateObject_4$5, templateObject_5$3;
 
 var ToastAction = function (_a) {
     var action = _a.action;

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { CogIcon } from "../../../components/Svg";
 import IconButton from "../../../components/Button/IconButton";
-import { MENU_ENTRY_HEIGHT , PRICE_ENTRY_HEIGHT} from "../config";
+import { MENU_ENTRY_HEIGHT, PRICE_ENTRY_HEIGHT } from "../config";
 import { PanelProps, PushedProps } from "../types";
 import CakePrice from "./CakePrice";
 import ThemeSwitcher from "./ThemeSwitcher";
@@ -17,7 +17,12 @@ const Container = styled.div`
 
   background: ${({ theme }) => (theme.isDark ? "#161f33" : "#E6FDFF")};
   border-top: solid 1px #42d784;
-  border-bottom: solid 1px #42d784;
+ //  border-bottom: solid 1px #42d784;
+`;
+const Div = styled.div`
+ height: 43px;
+ margin: 40px 5px 25px 5px;
+
 `;
 
 const SettingsEntry = styled.div`
