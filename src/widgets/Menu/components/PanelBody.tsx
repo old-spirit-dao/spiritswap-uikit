@@ -8,12 +8,26 @@ import { MenuEntry, LinkLabel } from "./MenuEntry";
 import MenuLink from "./MenuLink";
 import { PanelProps, PushedProps } from "../types";
 import { BadgeNewIcon } from "../icons";
+import CakePrice from "./CakePrice";
+import SocialLinks from "./SocialLinks";
+import { MENU_ENTRY_HEIGHT } from "../config";
 
 interface Props extends PanelProps, PushedProps {
   isMobile: boolean;
 }
 
 const Icons = (IconModule as unknown) as { [key: string]: React.FC<SvgProps> };
+
+const Price = styled.div`
+  display: flex;
+  align-items: center;
+  //justify-content: space-between;
+  justify-content: flex-start;
+  height: ${MENU_ENTRY_HEIGHT}px;
+  //padding: 0 8px;
+  border-top: 1px solid #42BE71;
+  border-bottom: 1px solid #42BE71;
+`;
 
 const Container = styled.div`
   display: flex;
@@ -44,7 +58,7 @@ const MenuWrapper = styled.div`
   align-items: center;
 `;
 
-const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) => {
+const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links , cakePriceUsd}) => {
   const location = useLocation();
 
   // Close the menu when a user clicks a link on mobile
@@ -63,31 +77,36 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) => {
           const initialOpenState = entry.initialOpenState === true ? entry.initialOpenState : itemsMatchIndex >= 0;
 
           return (
-            <Accordion
-              key={entry.label}
-              isPushed={isPushed}
-              pushNav={pushNav}
-              icon={iconElement}
-              label={entry.label}
-              initialOpenState={initialOpenState}
-              className={calloutClass}
-              inSpirit={inSpiritLinks}
-            >
-              {isPushed &&
-                entry.items.map((item) => (
-                  <MenuEntry
-                    key={item.href}
-                    secondary
-                    isActive={item.href === location.pathname}
-                    onClick={handleClick}
-                    inSpirit={inSpiritLinks}
-                  >
-                    <MenuLink href={item.href} target={item.target}>
-                      {item.label}
-                    </MenuLink>
-                  </MenuEntry>
-                ))}
-            </Accordion>
+            <>
+              <Price>
+                <CakePrice cakePriceUsd={cakePriceUsd} />
+              </Price>
+              <Accordion
+                key={entry.label}
+                isPushed={isPushed}
+                pushNav={pushNav}
+                icon={iconElement}
+                label={entry.label}
+                initialOpenState={initialOpenState}
+                className={calloutClass}
+                inSpirit={inSpiritLinks}
+              >
+                {isPushed &&
+                  entry.items.map((item) => (
+                    <MenuEntry
+                      key={item.href}
+                      secondary
+                      isActive={item.href === location.pathname}
+                      onClick={handleClick}
+                      inSpirit={inSpiritLinks}
+                    >
+                      <MenuLink href={item.href} target={item.target}>
+                        {item.label}
+                      </MenuLink>
+                    </MenuEntry>
+                  ))}
+              </Accordion>
+            </>
           );
         }
         return (
@@ -104,10 +123,10 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) => {
                   {entry.label}{" "}
                 </LinkLabel>
                 {entry.label === "Portfolio" ||
-                entry.label === "inSpirit" ||
-                entry.label === "Boosted Farms" ||
-                entry.label === "IDO" ||
-                entry.label === "Lend/Borrow" ? (
+                  entry.label === "inSpirit" ||
+                  entry.label === "Boosted Farms" ||
+                  entry.label === "IDO" ||
+                  entry.label === "Lend/Borrow" ? (
                   <NewIcon />
                 ) : null}
               </MenuWrapper>
