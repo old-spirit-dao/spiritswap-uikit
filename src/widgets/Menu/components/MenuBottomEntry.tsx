@@ -31,12 +31,14 @@ const MenuBottomEntry = styled.div<Props>`
   display: flex;
   align-items: center;
   height: ${ MENU_BOTTOM_ENTRY_HEIGHT}px;
-  padding: ${({ secondary }) => (secondary ? "0 32px" : "0 16px")};
+  padding: ${({ secondary }) => (secondary ? "18px 16px" : "18px 16px")};
   font-size: 15px; // ${({ secondary }) => (secondary ? "14px" : "16px")};
+  font-weight: bold;
   background-color: transparent; // ${({ secondary, theme }) => (secondary ? theme.colors.background : "transparent")};
   color: ${({ theme }) => theme.colors.textSubtle};
   box-shadow: ${({ isActive, theme }) => (isActive ? `inset 0px 0px 10px ${theme.colors.primary}` : "none")};
   cursor: pointer;
+  align-self: flex-start;
   a {
     display: flex;
     align-items: center;

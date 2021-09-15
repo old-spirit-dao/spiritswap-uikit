@@ -60,10 +60,10 @@ const MenuWrapper = styled.div`
 `;
 
 const BottomContainer = styled.div`
-  flex-direction: column;
+  height: 300px;
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-end;
 `;
 
@@ -90,7 +90,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, cakePr
 
           return (
             <BottomContainer>
-            {/*   <Accordion
+              {/*   <Accordion
                 key={entry.label}
                 isPushed={isPushed}
                 pushNav={pushNav}
@@ -100,20 +100,20 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, cakePr
                 className={calloutClass}
                 inSpirit={inSpiritLinks}
               > */}
-                {isPushed &&
-                  entry.items.map((item) => (
-                    <MenuBottomEntry
-                      key={item.href}
-                      secondary
-                      isActive={item.href === location.pathname}
-                      onClick={handleClick}
-                      inSpirit={inSpiritLinks}
-                    >
-                      <MenuLink href={item.href} target={item.target}>
-                        {item.label}
-                      </MenuLink>
-                    </MenuBottomEntry>
-                  ))}
+              {isPushed &&
+                entry.items.map((item) => (
+                  <MenuBottomEntry
+                    key={item.href}
+                    secondary
+                    isActive={item.href === location.pathname}
+                    onClick={handleClick}
+                    inSpirit={inSpiritLinks}
+                  >
+                    <MenuLink href={item.href} target={item.target}>
+                      {item.label}
+                    </MenuLink>
+                  </MenuBottomEntry>
+                ))}
               {/* </Accordion> */}
             </BottomContainer>
           );
