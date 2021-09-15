@@ -2697,9 +2697,11 @@ var MenuLink = function (_a) {
 
 var PriceLink = styled.span(templateObject_1$E || (templateObject_1$E = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n\n  svg {\n    transition: transform 0.3s;\n  }\n"], ["\n  display: flex;\n  align-items: center;\n\n  svg {\n    transition: transform 0.3s;\n  }\n"])));
 var CakePrice = function (_a) {
-    var cakePriceUsd = _a.cakePriceUsd;
+    var cakePriceUsd = _a.cakePriceUsd, showMenu = _a.showMenu;
     return cakePriceUsd ? (React.createElement(PriceLink, null,
-        React.createElement(Icon$x, { width: "24px", mr: "8px" }),
+        showMenu ?
+            React.createElement(Icon$x, { width: "24px", mr: "8px" })
+            : null,
         React.createElement(Link, { href: "https://coinmarketcap.com/currencies/spiritswap/", style: { marginLeft: "5px", textDecoration: "none" }, target: "_blank", color: "textSubtle", bold: true }, "$" + cakePriceUsd.toFixed(3)))) : (React.createElement(Skeleton, { width: 80, height: 24 }));
 };
 var CakePrice$1 = React.memo(CakePrice);
@@ -2711,40 +2713,40 @@ var Container$2 = styled.div(templateObject_2$f || (templateObject_2$f = __makeT
 var rotate$1 = keyframes(templateObject_3$9 || (templateObject_3$9 = __makeTemplateObject(["\n    0% { transform: translate(0,  0px); }\n    50%  { transform: translate(8px, 0); }\n    100%   { transform: translate(0, -0px); }  \n  }\n"], ["\n    0% { transform: translate(0,  0px); }\n    50%  { transform: translate(8px, 0); }\n    100%   { transform: translate(0, -0px); }  \n  }\n"])));
 var NewIcon = styled(Icon$1e)(templateObject_4$3 || (templateObject_4$3 = __makeTemplateObject(["\n  position: absolute;\n  left: 155px;\n  width: 40px;\n  margin-right: 45px;\n  animation: ", " 6s infinite;\n"], ["\n  position: absolute;\n  left: 155px;\n  width: 40px;\n  margin-right: 45px;\n  animation: ", " 6s infinite;\n"])), rotate$1);
 var MenuWrapper = styled.div(templateObject_5$1 || (templateObject_5$1 = __makeTemplateObject(["\n  position: relative;\n  display: flex;\n  align-items: center;\n"], ["\n  position: relative;\n  display: flex;\n  align-items: center;\n"])));
-var BottomContainer = styled.div(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  flex-direction:column;\n  height: 290px;\n  position: relative;\n  display: flex;\n  align-items: flex-start;\n  justify-content: flex-end;\n"], ["\n  flex-direction:column;\n  height: 290px;\n  position: relative;\n  display: flex;\n  align-items: flex-start;\n  justify-content: flex-end;\n"])));
+var BottomContainer = styled.div(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  flex-direction:column;\n  margin-top: 75px;\n  position: relative;\n  display: flex;\n  align-items: flex-start;\n  justify-content: flex-end;\n"], ["\n  flex-direction:column;\n  margin-top: 75px;\n  position: relative;\n  display: flex;\n  align-items: flex-start;\n  justify-content: flex-end;\n"])));
 var PanelBody = function (_a) {
-    var isPushed = _a.isPushed, pushNav = _a.pushNav, isMobile = _a.isMobile, links = _a.links, cakePriceUsd = _a.cakePriceUsd;
+    var isPushed = _a.isPushed, pushNav = _a.pushNav, isMobile = _a.isMobile, links = _a.links, cakePriceUsd = _a.cakePriceUsd, showMenu = _a.showMenu;
     var location = useLocation();
     // Close the menu when a user clicks a link on mobile
     var handleClick = isMobile ? function () { return pushNav(false); } : undefined;
-    return (React.createElement(Container$2, null,
-        React.createElement(Price, null,
-            React.createElement(CakePrice$1, { cakePriceUsd: cakePriceUsd })),
-        links.map(function (entry) {
-            var Icon = Icons[entry.icon];
-            var iconElement = React.createElement(Icon, { width: "24px", mr: "8px" });
-            var calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
-            var inSpiritLinks = entry.label === "inSpirit" || entry.label === "Boosted Farms" ? "inSpirit" : "noInSpirit";
-            if (entry.items) {
-                var itemsMatchIndex = entry.items.findIndex(function (item) { return item.href === location.pathname; });
-                entry.initialOpenState === true ? entry.initialOpenState : itemsMatchIndex >= 0;
-                return (React.createElement(BottomContainer, null, isPushed &&
+    return (React.createElement(Container$2, null, links.map(function (entry) {
+        var Icon = Icons[entry.icon];
+        var iconElement = React.createElement(Icon, { width: "24px", mr: "8px" });
+        var calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
+        var inSpiritLinks = entry.label === "inSpirit" || entry.label === "Boosted Farms" ? "inSpirit" : "noInSpirit";
+        if (entry.items) {
+            var itemsMatchIndex = entry.items.findIndex(function (item) { return item.href === location.pathname; });
+            entry.initialOpenState === true ? entry.initialOpenState : itemsMatchIndex >= 0;
+            return (React.createElement(BottomContainer, null,
+                React.createElement(Price, null,
+                    React.createElement(CakePrice$1, { showMenu: showMenu, cakePriceUsd: cakePriceUsd })),
+                isPushed &&
                     entry.items.map(function (item) { return (React.createElement(MenuBottomEntry, { key: item.href, secondary: true, isActive: item.href === location.pathname, onClick: handleClick, inSpirit: inSpiritLinks },
                         React.createElement(MenuLink, { href: item.href, target: item.target }, item.label))); })));
-            }
-            return (React.createElement(MenuEntry, { key: entry.label, isActive: entry.href === location.pathname, className: calloutClass, inSpirit: inSpiritLinks },
-                React.createElement(MenuLink, { href: entry.href, target: entry.target, onClick: handleClick },
-                    React.createElement(MenuWrapper, null,
-                        iconElement,
-                        React.createElement(LinkLabelMemo, { isPushed: isPushed, inSpirit: inSpiritLinks },
-                            entry.label,
-                            " "),
-                        entry.label === "Portfolio" ||
-                            entry.label === "inSpirit" ||
-                            entry.label === "Boosted Farms" ||
-                            entry.label === "IDO" ||
-                            entry.label === "Lend/Borrow" ? (React.createElement(NewIcon, null)) : null))));
-        })));
+        }
+        return (React.createElement(MenuEntry, { key: entry.label, isActive: entry.href === location.pathname, className: calloutClass, inSpirit: inSpiritLinks },
+            React.createElement(MenuLink, { href: entry.href, target: entry.target, onClick: handleClick },
+                React.createElement(MenuWrapper, null,
+                    iconElement,
+                    React.createElement(LinkLabelMemo, { isPushed: isPushed, inSpirit: inSpiritLinks },
+                        entry.label,
+                        " "),
+                    entry.label === "Portfolio" ||
+                        entry.label === "inSpirit" ||
+                        entry.label === "Boosted Farms" ||
+                        entry.label === "IDO" ||
+                        entry.label === "Lend/Borrow" ? (React.createElement(NewIcon, null)) : null))));
+    })));
 };
 var templateObject_1$F, templateObject_2$f, templateObject_3$9, templateObject_4$3, templateObject_5$1, templateObject_6;
 

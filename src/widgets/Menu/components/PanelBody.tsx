@@ -15,6 +15,7 @@ import { PRICE_ENTRY_HEIGHT } from "../config";
 
 interface Props extends PanelProps, PushedProps {
   isMobile: boolean;
+  showMenu?:boolean
 }
 
 const Icons = (IconModule as unknown) as { [key: string]: React.FC<SvgProps> };
@@ -61,14 +62,14 @@ const MenuWrapper = styled.div`
 
 const BottomContainer = styled.div`
   flex-direction:column;
-  height: 290px;
+  margin-top: 75px;
   position: relative;
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
 `;
 
-const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, cakePriceUsd }) => {
+const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, cakePriceUsd, showMenu }) => {
   const location = useLocation();
 
   // Close the menu when a user clicks a link on mobile
@@ -76,9 +77,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, cakePr
 
   return (
     <Container>
-      <Price>
-        <CakePrice cakePriceUsd={cakePriceUsd} />
-      </Price>
+
       {links.map((entry) => {
         const Icon = Icons[entry.icon];
         const iconElement = <Icon width="24px" mr="8px" />;
@@ -101,6 +100,9 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, cakePr
                 className={calloutClass}
                 inSpirit={inSpiritLinks}
               > */}
+              <Price>
+                <CakePrice showMenu={showMenu} cakePriceUsd={cakePriceUsd} />
+              </Price>
               {isPushed &&
                 entry.items.map((item) => (
                   <MenuBottomEntry

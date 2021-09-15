@@ -7,6 +7,7 @@ import { Link } from "../../../components/Link";
 
 interface Props {
   cakePriceUsd?: number;
+  showMenu?:boolean
 }
 
 const PriceLink = styled.span`
@@ -18,10 +19,12 @@ const PriceLink = styled.span`
   }
 `;
 
-const CakePrice: React.FC<Props> = ({ cakePriceUsd }) => {
+const CakePrice: React.FC<Props> = ({ cakePriceUsd, showMenu }) => {
   return cakePriceUsd ? (
     <PriceLink>
+      {showMenu ? 
       <PancakeRoundIcon width="24px" mr="8px" />
+      :null}
       <Link
         href={"https://coinmarketcap.com/currencies/spiritswap/"}
         style={{ marginLeft: "5px", textDecoration: "none" }}
