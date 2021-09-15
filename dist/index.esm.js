@@ -2719,34 +2719,34 @@ var PanelBody = function (_a) {
     var location = useLocation();
     // Close the menu when a user clicks a link on mobile
     var handleClick = isMobile ? function () { return pushNav(false); } : undefined;
-    return (React.createElement(Container$2, null, links.map(function (entry) {
-        var Icon = Icons[entry.icon];
-        var iconElement = React.createElement(Icon, { width: "24px", mr: "8px" });
-        var calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
-        var inSpiritLinks = entry.label === "inSpirit" || entry.label === "Boosted Farms" ? "inSpirit" : "noInSpirit";
-        if (entry.items) {
-            var itemsMatchIndex = entry.items.findIndex(function (item) { return item.href === location.pathname; });
-            entry.initialOpenState === true ? entry.initialOpenState : itemsMatchIndex >= 0;
-            return (React.createElement(BottomContainer, null,
-                React.createElement(Price, null,
-                    React.createElement(CakePrice$1, { showMenu: showMenu, cakePriceUsd: cakePriceUsd })),
-                isPushed &&
+    return (React.createElement(Container$2, null,
+        React.createElement(Price, null,
+            React.createElement(CakePrice$1, { showMenu: showMenu, cakePriceUsd: cakePriceUsd })),
+        links.map(function (entry) {
+            var Icon = Icons[entry.icon];
+            var iconElement = React.createElement(Icon, { width: "24px", mr: "8px" });
+            var calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
+            var inSpiritLinks = entry.label === "inSpirit" || entry.label === "Boosted Farms" ? "inSpirit" : "noInSpirit";
+            if (entry.items) {
+                var itemsMatchIndex = entry.items.findIndex(function (item) { return item.href === location.pathname; });
+                entry.initialOpenState === true ? entry.initialOpenState : itemsMatchIndex >= 0;
+                return (React.createElement(BottomContainer, null, isPushed &&
                     entry.items.map(function (item) { return (React.createElement(MenuBottomEntry, { key: item.href, secondary: true, isActive: item.href === location.pathname, onClick: handleClick, inSpirit: inSpiritLinks },
                         React.createElement(MenuLink, { href: item.href, target: item.target }, item.label))); })));
-        }
-        return (React.createElement(MenuEntry, { key: entry.label, isActive: entry.href === location.pathname, className: calloutClass, inSpirit: inSpiritLinks },
-            React.createElement(MenuLink, { href: entry.href, target: entry.target, onClick: handleClick },
-                React.createElement(MenuWrapper, null,
-                    iconElement,
-                    React.createElement(LinkLabelMemo, { isPushed: isPushed, inSpirit: inSpiritLinks },
-                        entry.label,
-                        " "),
-                    entry.label === "Portfolio" ||
-                        entry.label === "inSpirit" ||
-                        entry.label === "Boosted Farms" ||
-                        entry.label === "IDO" ||
-                        entry.label === "Lend/Borrow" ? (React.createElement(NewIcon, null)) : null))));
-    })));
+            }
+            return (React.createElement(MenuEntry, { key: entry.label, isActive: entry.href === location.pathname, className: calloutClass, inSpirit: inSpiritLinks },
+                React.createElement(MenuLink, { href: entry.href, target: entry.target, onClick: handleClick },
+                    React.createElement(MenuWrapper, null,
+                        iconElement,
+                        React.createElement(LinkLabelMemo, { isPushed: isPushed, inSpirit: inSpiritLinks },
+                            entry.label,
+                            " "),
+                        entry.label === "Portfolio" ||
+                            entry.label === "inSpirit" ||
+                            entry.label === "Boosted Farms" ||
+                            entry.label === "IDO" ||
+                            entry.label === "Lend/Borrow" ? (React.createElement(NewIcon, null)) : null))));
+        })));
 };
 var templateObject_1$F, templateObject_2$f, templateObject_3$9, templateObject_4$3, templateObject_5$1, templateObject_6;
 

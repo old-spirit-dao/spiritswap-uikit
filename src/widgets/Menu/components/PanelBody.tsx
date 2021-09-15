@@ -15,7 +15,7 @@ import { PRICE_ENTRY_HEIGHT } from "../config";
 
 interface Props extends PanelProps, PushedProps {
   isMobile: boolean;
-  showMenu?:boolean
+  showMenu?: boolean
 }
 
 const Icons = (IconModule as unknown) as { [key: string]: React.FC<SvgProps> };
@@ -77,7 +77,9 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, cakePr
 
   return (
     <Container>
-
+      <Price>
+        <CakePrice showMenu={showMenu} cakePriceUsd={cakePriceUsd} />
+      </Price>
       {links.map((entry) => {
         const Icon = Icons[entry.icon];
         const iconElement = <Icon width="24px" mr="8px" />;
@@ -100,9 +102,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, cakePr
                 className={calloutClass}
                 inSpirit={inSpiritLinks}
               > */}
-              <Price>
-                <CakePrice showMenu={showMenu} cakePriceUsd={cakePriceUsd} />
-              </Price>
+
               {isPushed &&
                 entry.items.map((item) => (
                   <MenuBottomEntry
