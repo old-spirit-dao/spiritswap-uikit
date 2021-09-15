@@ -2732,9 +2732,10 @@ var PanelBody = function (_a) {
     // Close the menu when a user clicks a link on mobile
     var handleClick = isMobile ? function () { return pushNav(false); } : undefined;
     return (React__default['default'].createElement(Container$2, null,
-        isPushed ? React__default['default'].createElement(Div, null,
+        React__default['default'].createElement(Div, null, isPushed ?
             React__default['default'].createElement(Price, null,
-                React__default['default'].createElement(CakePrice$1, { cakePriceUsd: cakePriceUsd }))) : null,
+                React__default['default'].createElement(CakePrice$1, { cakePriceUsd: cakePriceUsd }))
+            : null),
         links.map(function (entry) {
             var Icon = Icons[entry.icon];
             var iconElement = React__default['default'].createElement(Icon, { width: "24px", mr: "8px" });
